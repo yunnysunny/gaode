@@ -85,12 +85,14 @@ function showArea() {
 			var latitude = obj.getAttribute('lat');
 			var point = new AMap.LngLat(longitude, latitude); // 创建点坐标  
 			map.setZoomAndCenter(17,point);
+			$('cityNow').innerHTML = selectedCity;
+			log.info('selected city now:' + selectedCity);
 			
 			if (!hasClassName(obj.className,'clicked'))
 			{
 				addClass(obj,'clicked');
 			}
-			$('cityNow').innerHTML = obj.innerHTML;
+			//$('cityNow').innerHTML = obj.innerHTML;
 		}				
 	});
 
@@ -104,7 +106,7 @@ function initMap(longitudeNow, latitudeNow) {
 		level:defaultLevel,//设置地图缩放级别  
 		center:new AMap.LngLat(longitudeNow,latitudeNow),//设置地图中心点     
 		doubleClickZoom:true,//双击放大地图  
-		scrollwheel:true//鼠标滚轮缩放地图  
+		scrollwheel:false//鼠标滚轮缩放地图  
 	}  
 	map = new AMap.Map("container",opt);
 
